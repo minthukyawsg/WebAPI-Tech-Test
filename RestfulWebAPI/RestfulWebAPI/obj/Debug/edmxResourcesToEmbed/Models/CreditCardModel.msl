@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="APIDBModelStoreContainer" CdmEntityContainer="APIDBEntities1">
+    <EntitySetMapping Name="Cards">
+      <EntityTypeMapping TypeName="APIDBModel.Card">
+        <MappingFragment StoreEntitySet="Cards">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="CardValidationRule" FunctionName="APIDBModel.Store.CardValidationRule">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="APIDBModel.CardValidationRule_Result">
+          <ScalarProperty Name="Result" ColumnName="Result" />
+          <ScalarProperty Name="CardType" ColumnName="CardType" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

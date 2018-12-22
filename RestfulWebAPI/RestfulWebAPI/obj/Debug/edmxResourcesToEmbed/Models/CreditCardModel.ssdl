@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="APIDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'APIDB.dbo.Cards' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Cards">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="CardNumber" />
+      <PropertyRef Name="ExpiryDate" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CardNumber" Type="int" Nullable="false" />
+    <Property Name="ExpiryDate" Type="date" Nullable="false" />
+  </EntityType>
+  <Function Name="CardValidationRule" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CardNumber" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="APIDBModelStoreContainer">
+    <EntitySet Name="Cards" EntityType="Self.Cards" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Cards].[ID] AS [ID], 
+    [Cards].[CardNumber] AS [CardNumber], 
+    [Cards].[ExpiryDate] AS [ExpiryDate]
+    FROM [dbo].[Cards] AS [Cards]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
